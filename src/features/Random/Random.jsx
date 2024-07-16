@@ -134,15 +134,22 @@ const Random = () => {
           <div className="mt-4">
             <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
               <div className="flex justify-center">
-                <button onClick={handleClick} className=" justify-center ">
-                  <div className="pb-10">พร้อมก็เปิดการ์ดสิจ๊ะ</div>
+                <button
+                  onClick={!isAnimating ? handleClick : undefined}
+                  className=" justify-center "
+                >
+                  {!isAnimating ? (
+                    <div className="">พร้อมก็เปิดการ์ดสิจ๊ะ</div>
+                  ) : (
+                    <div className="animate-pulse mt-4">หาของแปปนะจ๊ะ...</div>
+                  )}
                   <div>
                     <img
                       src={randomMeme}
                       style={{
                         boxShadow: "0px 0px 70px 0px rgb(255,228,0)",
                       }}
-                      className="w-[350px] h-[400px] rounded-xl border p-5 m-5 border-gray-400 bg-[url('/Yuki.png')] bg-cover"
+                      className="w-[350px] h-[400px] rounded-xl border p-5 m-5 border-gray-400 bg-[url('/Yuki.')] bg-cover"
                     />
                   </div>
                 </button>
@@ -186,9 +193,6 @@ const Random = () => {
               </form>
             </div>
           </div>
-        )}
-        {isAnimating && (
-          <div className="animate-pulse mt-4">หาของแปปนะจ๊ะ...</div>
         )}
       </div>
     </div>
